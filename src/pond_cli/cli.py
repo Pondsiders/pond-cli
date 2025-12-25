@@ -79,13 +79,16 @@ def store(
 
         rprint("[green]✓ Memory stored[/green]")
 
-        # Show splash (related memories) if present
-        splash = result.get("splash", [])
-        if splash:
-            rprint("\n[dim]Related memories (splash):[/dim]")
-            for i, mem in enumerate(splash[:3], 1):
-                rprint(format_memory(mem, i))
-                rprint()
+        # Splash disabled 2025-12-25 — Hippo provides pre-prompt recall now,
+        # and post-store splash wasn't shaping responses (just acknowledgment).
+        # Uncomment if we miss it.
+        #
+        # splash = result.get("splash", [])
+        # if splash:
+        #     rprint("\n[dim]Related memories (splash):[/dim]")
+        #     for i, mem in enumerate(splash[:3], 1):
+        #         rprint(format_memory(mem, i))
+        #         rprint()
 
     except Exception as e:
         rprint(f"[red]Error storing memory:[/red] {e}")
